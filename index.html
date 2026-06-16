@@ -6099,9 +6099,13 @@ async function selectAnswer(btn, selected, correct, wordText) {
     </div>
     <div style="margin-bottom:6px">${w.meaning}</div>
     ${memory ? `<div style="font-size:12px;padding:6px 10px;background:rgba(255,255,255,.5);border-radius:8px;margin-bottom:6px;line-height:1.6">🌱 ${memory}</div>` : ''}
-    ${example ? `<div style="font-size:12px;padding:6px 10px;background:rgba(255,255,255,.5);border-radius:8px;line-height:1.6;display:flex;align-items:flex-start;gap:6px">
-      <span>💬 <em>${example}</em></span>
-      <button onclick="speakWord('${example.replace(/'/g,"\\'")}')" style="border:none;background:none;cursor:pointer;font-size:14px;flex-shrink:0;padding:0;opacity:.7">🔈</button>
+    ${example ? `<div style="font-size:12px;padding:6px 10px;background:rgba(255,255,255,.5);border-radius:8px;line-height:1.6">
+      <div style="display:flex;align-items:flex-start;gap:6px">
+        <span>💬 <em>${example}</em></span>
+        <button onclick="speakWord('${example.replace(/'/g,"\\'")}')" style="border:none;background:none;cursor:pointer;font-size:14px;flex-shrink:0;padding:0;opacity:.7">🔈</button>
+      </div>
+      ${w.exampleTrans ? `<div id="quizTrans" style="margin-top:6px;color:var(--muted);font-size:12px;display:none">🇯🇵 ${w.exampleTrans}</div>
+      <button onclick="const t=document.getElementById('quizTrans');const open=t.style.display==='block';t.style.display=open?'none':'block';this.textContent=open?'🇯🇵 日本語訳を見る':'🇯🇵 閉じる'" style="margin-top:4px;border:none;background:none;color:var(--accent);font-size:11px;font-weight:700;cursor:pointer;padding:0;font-family:inherit">🇯🇵 日本語訳を見る</button>` : ''}
     </div>` : ''}
   `;
 
